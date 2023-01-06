@@ -1,6 +1,15 @@
 # Nekos[dot]life API wrapper.
 This is a simple wrapper for the [Nekos.life](https://nekos.life) API, written for use with Deno.
 
+## How to use
+```ts
+/* Import the module */
+import { Nekos } from "https://deno.land/x/nekos_deno@1.1.0/mod.ts";
+
+/* Get a random neko image in the console */
+Nekos.neko().then(console.log);
+```
+
 ## Supported Endpoints
 The wrapper currently supports the following endpoints:
 
