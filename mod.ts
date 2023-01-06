@@ -19,34 +19,34 @@ async function request(endPoint: string, startTime: number, input?: string): Pro
   return json;
 }
 
-export const Nekos = {
-  cat: (): Promise<ICatResponse> => request("cat", Date.now()),
-  eightBall: (): Promise<IEightBallResponse> => request("8ball", Date.now()),
-  fact: (): Promise<IFactResponse> => request("fact", Date.now()),
-  name: (): Promise<INameResponse> => request("name", Date.now()),
-  owoify: (text: string): Promise<IOwOReponse> => request("owoify", Date.now(), text),
-  why: (): Promise<IWhyResponse> => request("why", Date.now()),
+export class Nekos {
+  static cat(): Promise<ICatResponse> { return request("cat", Date.now()); }
+  static eightBall(): Promise<IEightBallResponse> { return request("8ball", Date.now()); }
+  static fact(): Promise<IFactResponse> { return request("fact", Date.now()); }
+  static name_(): Promise<INameResponse> { return request("name", Date.now()); }
+  static owoify(text: string): Promise<IOwOReponse> { return request("owoify", Date.now(), text); }
+  static why(): Promise<IWhyResponse> { return request("why", Date.now()); }
   
-  avatar: (): Promise<IImageResponse> => request("img/avatar", Date.now()),
-  cuddle: (): Promise<IImageResponse> => request("img/cuddle", Date.now()),
-  feed: (): Promise<IImageResponse> => request("img/feed", Date.now()),
-  foxGirl: (): Promise<IImageResponse> => request("img/fox_girl", Date.now()),
-  gasm: (): Promise<IImageResponse> => request("img/gasm", Date.now()),
-  gecg: (): Promise<IImageResponse> => request("img/gecg", Date.now()),
-  goose: (): Promise<IImageResponse> => request("img/gifter", Date.now()),
-  hug: (): Promise<IImageResponse> => request("img/hug", Date.now()),
-  kiss: (): Promise<IImageResponse> => request("img/kiss", Date.now()),
-  lewd: (): Promise<IImageResponse> => request("img/lewd", Date.now()),
-  lizard: (): Promise<IImageResponse> => request("img/lizard", Date.now()),
-  meow: (): Promise<IImageResponse> => request("img/meow", Date.now()),
-  ngif: (): Promise<IImageResponse> => request("img/ngif", Date.now()),
-  neko: (): Promise<IImageResponse> => request("img/neko", Date.now()),
-  pat: (): Promise<IImageResponse> => request("img/pat", Date.now()),
-  slap: (): Promise<IImageResponse> => request("img/slap", Date.now()),
-  smug: (): Promise<IImageResponse> => request("img/smug", Date.now()),
-  spank: (): Promise<IImageResponse> => request("img/spank", Date.now()),
-  tickle: (): Promise<IImageResponse> => request("img/tickle", Date.now()),
-  wallpaper: (): Promise<IImageResponse> => request("img/wallpaper", Date.now()),
-  waifu: (): Promise<IImageResponse> => request("img/waifu", Date.now()),
-  woof: (): Promise<IImageResponse> => request("img/woof", Date.now())
+  static avatar(): Promise<IImageResponse> { return request("img/avatar", Date.now()); }
+  static cuddle(): Promise<IImageResponse> { return request("img/cuddle", Date.now()); }
+  static feed(): Promise<IImageResponse> { return request("img/feed", Date.now()); }
+  static foxGirl(): Promise<IImageResponse> { return request("img/fox_girl", Date.now()); }
+  static gasm(): Promise<IImageResponse> { return request("img/gasm", Date.now()); }
+  static gecg(): Promise<IImageResponse> { return request("img/gecg", Date.now()); }
+  static goose(): Promise<IImageResponse> { return request("img/gifter", Date.now()); }
+  static hug(): Promise<IImageResponse> { return request("img/hug", Date.now()); }
+  static kiss(): Promise<IImageResponse> { return request("img/kiss", Date.now()); }
+  static lewd(): Promise<IImageResponse> { return request("img/lewd", Date.now()); }
+  static lizard(): Promise<IImageResponse> { return request("img/lizard", Date.now()); }
+  static meow(): Promise<IImageResponse> { return request("img/meow", Date.now()); }
+  static ngif(): Promise<IImageResponse> { return request("img/ngif", Date.now()); }
+  static neko(): Promise<IImageResponse> { return request("img/neko", Date.now()); }
+  static pat(): Promise<IImageResponse> { return request("img/pat", Date.now()); }
+  static slap(): Promise<IImageResponse> { return request("img/slap", Date.now()); }
+  static smug(): Promise<IImageResponse> { return request("img/smug", Date.now()); }
+  static spank(): Promise<IImageResponse> { return request("img/spank", Date.now()); }
+  static tickle(): Promise<IImageResponse> { return request("img/tickle", Date.now()); }
+  static wallpaper(): Promise<IImageResponse> { return request("img/wallpaper", Date.now()); }
+  static waifu(): Promise<IImageResponse> { return request("img/waifu", Date.now()); }
+  static woof(): Promise<IImageResponse> { return request("img/woof", Date.now()); }
 }

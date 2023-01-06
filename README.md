@@ -4,7 +4,7 @@ This is a simple wrapper for the [Nekos.life](https://nekos.life) API, written f
 ## How to use
 ```ts
 /* Import the module */
-import { Nekos } from "https://deno.land/x/nekos_deno@1.1.0/mod.ts";
+import { Nekos } from "https://deno.land/x/nekos_deno@1.2.0/mod.ts";
 
 /* Get a random neko image in the console */
 Nekos.neko().then(console.log);
