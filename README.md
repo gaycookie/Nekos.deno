@@ -1,10 +1,13 @@
 # Nekos[dot]life API wrapper.
+[![](https://img.shields.io/badge/Deno%20Land-1.3.1-blue?style=for-the-badge)](https://deno.land/x/nekos_deno)
+‎‎ [![](https://img.shields.io/badge/documentation-1.3.1-blue?style=for-the-badge)](https://deno.land/x/nekos_deno/mod.ts)
+
 This is a simple wrapper for the [Nekos.life](https://nekos.life) API, written for use with Deno.
 
 ## How to use
 ```ts
 /* Import the module */
-import { Nekos, RandomName } from "https://deno.land/x/nekos_deno@1.3.0/mod.ts";
+import { Nekos, RandomName } from "https://deno.land/x/nekos_deno@1.3.1/mod.ts";
 
 /* This will fetch a random Neko and log it in the console. */
 Nekos.random(RandomName.NEKO).then(console.log);
