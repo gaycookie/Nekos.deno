@@ -4,10 +4,10 @@ This is a simple wrapper for the [Nekos.life](https://nekos.life) API, written f
 ## How to use
 ```ts
 /* Import the module */
-import { Nekos } from "https://deno.land/x/nekos_deno@1.2.0/mod.ts";
+import { Nekos, RandomName } from "https://deno.land/x/nekos_deno@1.3.0/mod.ts";
 
-/* Get a random neko image in the console */
-Nekos.neko().then(console.log);
+/* This will fetch a random Neko and log it in the console. */
+Nekos.random(RandomName.NEKO).then(console.log);
 ```
 
 ## Supported Endpoints

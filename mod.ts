@@ -1,17 +1,63 @@
-export interface IResponse { time: number }
-export interface ICatResponse extends IResponse { cat: string }
-export interface IEightBallResponse extends IResponse { response: string }
-export interface IFactResponse extends IResponse { fact: string }
-export interface IImageResponse extends IResponse { url: string }
-export interface INameResponse extends IResponse { name: string }
-export interface IOwOReponse extends IResponse { owo: string }
-export interface IWhyResponse extends IResponse { why: string }
+/**
+ * @enum {string} Endpoints
+ */
+export enum RandomName {
+  CAT         = "/api/v2/cat",
+  EIGHT_BALL  = "/api/v2/8ball",
+  FACT        = "/api/v2/fact",
+  NAME        = "/api/v2/name",
+  OWOIFY      = "/api/v2/owoify",
+  WHY         = "/api/v2/why",
+  AVATAR      = "/api/v2/img/avatar",
+  CUDDLE      = "/api/v2/img/cuddle",
+  FEED        = "/api/v2/img/feed",
+  FOX_GIRL    = "/api/v2/img/fox_girl",
+  GASM        = "/api/v2/img/gasm",
+  GECG        = "/api/v2/img/gecg",
+  GOOSE       = "/api/v2/img/goose",
+  HUG         = "/api/v2/img/hug",
+  KISS        = "/api/v2/img/kiss",
+  LEWD        = "/api/v2/img/lewd",
+  LIZARD      = "/api/v2/img/lizard",
+  MEOW        = "/api/v2/img/meow",
+  NEKO        = "/api/v2/img/neko",
+  PAT         = "/api/v2/img/pat",
+  SLAP        = "/api/v2/img/slap",
+  SMUG        = "/api/v2/img/smug",
+  SPANK       = "/api/v2/img/spank",
+  TICKLE      = "/api/v2/img/tickle",
+  WALLPAPER   = "/api/v2/img/wallpaper",
+  WAIFU       = "/api/v2/img/waifu",
+  WOOF        = "/api/v2/img/woof"
+}
 
-// deno-lint-ignore no-explicit-any
-async function request(endPoint: string, startTime: number, input?: string): Promise<any> {
-  let url = `https://nekos.life/api/v2/${endPoint}`;
-  if (input != undefined) url += `?text=${input}`;
+/**
+ * @param {string} cat: Response given by Cat endpoint.
+ * @param {string} response: Response given by 8ball endpoint together with url.
+ * @param {string} fact: Reponse given by Fact endpoint.
+ * @param {string} name: Reponse given by Name endpoint.
+ * @param {string} msg: Reponse given when an error occured.
+ * @param {string} owo: Reponse given by Owoify endpoint.
+ * @param {string} why: Reponse given by Why endpoint.
+ * @param {number} time: The time in ms it took to get a reponse back from the API.
+ */
+export interface IResponse { 
+  cat?: string;
+  response?: string;
+  fact?: string;
+  url?: string;
+  name?: string;
+  msg?: string;
+  owo?: string;
+  why?: string;
+  time: number;
+}
 
+async function request(path: string, text?: string): Promise<IResponse> {
+  let url: string = "https://nekos.life" + path;
+  if (text) url += `?text=${text}`;
+
+  const startTime = Date.now();
   const res = await fetch(url);
   const json = await res.json();
 
@@ -20,33 +66,12 @@ async function request(endPoint: string, startTime: number, input?: string): Pro
 }
 
 export class Nekos {
-  static cat(): Promise<ICatResponse> { return request("cat", Date.now()); }
-  static eightBall(): Promise<IEightBallResponse> { return request("8ball", Date.now()); }
-  static fact(): Promise<IFactResponse> { return request("fact", Date.now()); }
-  static name_(): Promise<INameResponse> { return request("name", Date.now()); }
-  static owoify(text: string): Promise<IOwOReponse> { return request("owoify", Date.now(), text); }
-  static why(): Promise<IWhyResponse> { return request("why", Date.now()); }
-  
-  static avatar(): Promise<IImageResponse> { return request("img/avatar", Date.now()); }
-  static cuddle(): Promise<IImageResponse> { return request("img/cuddle", Date.now()); }
-  static feed(): Promise<IImageResponse> { return request("img/feed", Date.now()); }
-  static foxGirl(): Promise<IImageResponse> { return request("img/fox_girl", Date.now()); }
-  static gasm(): Promise<IImageResponse> { return request("img/gasm", Date.now()); }
-  static gecg(): Promise<IImageResponse> { return request("img/gecg", Date.now()); }
-  static goose(): Promise<IImageResponse> { return request("img/gifter", Date.now()); }
-  static hug(): Promise<IImageResponse> { return request("img/hug", Date.now()); }
-  static kiss(): Promise<IImageResponse> { return request("img/kiss", Date.now()); }
-  static lewd(): Promise<IImageResponse> { return request("img/lewd", Date.now()); }
-  static lizard(): Promise<IImageResponse> { return request("img/lizard", Date.now()); }
-  static meow(): Promise<IImageResponse> { return request("img/meow", Date.now()); }
-  static ngif(): Promise<IImageResponse> { return request("img/ngif", Date.now()); }
-  static neko(): Promise<IImageResponse> { return request("img/neko", Date.now()); }
-  static pat(): Promise<IImageResponse> { return request("img/pat", Date.now()); }
-  static slap(): Promise<IImageResponse> { return request("img/slap", Date.now()); }
-  static smug(): Promise<IImageResponse> { return request("img/smug", Date.now()); }
-  static spank(): Promise<IImageResponse> { return request("img/spank", Date.now()); }
-  static tickle(): Promise<IImageResponse> { return request("img/tickle", Date.now()); }
-  static wallpaper(): Promise<IImageResponse> { return request("img/wallpaper", Date.now()); }
-  static waifu(): Promise<IImageResponse> { return request("img/waifu", Date.now()); }
-  static woof(): Promise<IImageResponse> { return request("img/woof", Date.now()); }
+  /**
+   * @param {RandomName} name: Name of the endpoint. eg. RandomName.NEKO
+   * @param {string} text: (Optional) Needed for some endpoints.
+   * @returns {Promise<IResponse>} Promise
+   */
+  static random(name: RandomName, text?: string): Promise<IResponse> {
+    return request(name, text);
+  }
 }
